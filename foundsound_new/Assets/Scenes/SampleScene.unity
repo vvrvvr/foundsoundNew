@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0013238302, g: 0.0012368727, b: 0.0012266884, a: 1}
+  m_IndirectSpecularColor: {r: 0.0013219157, g: 0.0012430564, b: 0.0012269346, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1444,6 +1444,7 @@ GameObject:
   - component: {fileID: 252915617}
   - component: {fileID: 252915616}
   - component: {fileID: 252915615}
+  - component: {fileID: 252915619}
   m_Layer: 0
   m_Name: Room 2 looper
   m_TagString: TeleportTrigger_2
@@ -1537,6 +1538,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1428820776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &252915619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252915614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76327fbfc12a443f5877efac3c2d601f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPosition: {fileID: 115330215}
 --- !u!1 &257753940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2810302280940546863, guid: 70bdeb33163fd41878cc83445e3d1c7d,
@@ -6588,6 +6602,7 @@ GameObject:
   - component: {fileID: 1016384446}
   - component: {fileID: 1016384445}
   - component: {fileID: 1016384444}
+  - component: {fileID: 1016384448}
   m_Layer: 0
   m_Name: Apartment trigger cube
   m_TagString: TeleportTrigger
@@ -6680,6 +6695,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1451691162}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1016384448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016384443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76327fbfc12a443f5877efac3c2d601f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPosition: {fileID: 441675296}
 --- !u!1 &1023514165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1482776267364311200, guid: 59db769f54577498b9c1386abef7351c,
