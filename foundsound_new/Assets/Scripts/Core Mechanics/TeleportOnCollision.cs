@@ -2,21 +2,23 @@ using UnityEngine;
 
 public class TeleportOnCollision : MonoBehaviour
 {
-    public Vector3 teleportPosition; // Заданные координаты для телепортации
+    public Transform teleportPosition;
+    // Заданные координаты для телепортации
 
     void OnTriggerEnter(Collider other)
     {
         // Проверяем, столкнулись ли с объектом, на который должны реагировать
-        if (other.gameObject.CompareTag("TeleportTrigger"))
+        if (other.gameObject.CompareTag("Player"))
         {
+            var player = other.gameObject;
             // Телепортируем игрока
-            TeleportPlayer();
+            TeleportPlayer(player);
         }
     }
 
-    void TeleportPlayer()
+    void TeleportPlayer(GameObject obj)
     {
         // Телепортируем игрока на заданные координаты
-        transform.position = teleportPosition;
+        obj.transform.position = teleportPosition.position;
     }
 }
