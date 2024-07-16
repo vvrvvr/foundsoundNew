@@ -15,20 +15,21 @@ public class HealthBar : MonoBehaviour
     private void Start()
     {
         originalHealth = slider.value;
-       // StartCoroutine(OscillateHealth());
+       
     }
 
-    public void SetMaxHealth(int health)
-    {
-        slider.maxValue = health;
-        slider.value = health;
-        originalHealth = health; // обновляем изначальное значение
-        fill.color = gradient.Evaluate(1f);
-    }
+    // пока не нужно
+    // public void SetMaxHealth(int health) 
+    // {
+    //     slider.maxValue = health;
+    //     slider.value = health;
+    //     originalHealth = health; // обновляем изначальное значение
+    //     fill.color = gradient.Evaluate(1f);
+    // }
 
-    public void SetHealth(float health)
+    public void SetSignal(float volume)
     {
-        slider.value = health + Random.Range(-0.02f, 0.02f); 
+        slider.value = volume + Random.Range(-0.02f, 0.02f); 
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 

@@ -29,7 +29,7 @@ public class SignalController : MonoBehaviour
         HandleEmiters();
         
         signalText.SetText("Signal: " + maxSignal.ToString("F2"));
-        signalBar.SetHealth(maxSignal);
+        signalBar.SetSignal(maxSignal);
     }
     
     private void HandleEmiters()
