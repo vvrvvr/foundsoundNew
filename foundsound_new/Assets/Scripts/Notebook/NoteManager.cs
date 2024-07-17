@@ -123,6 +123,7 @@ public class NoteManager : MonoBehaviour
     public void DropNote()
     {
         RemoveByName(currentOpenedNoteName);
+        CloseNote();
     }
 
     // Метод Awake для инициализации синглтона
