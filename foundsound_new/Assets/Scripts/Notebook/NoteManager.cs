@@ -34,6 +34,9 @@ public class NoteManager : MonoBehaviour
 
     // Список заметок
     public List<Note> notes = new List<Note>();
+    public List<NotepadNote> notepadNotes = new List<NotepadNote>();
+    public GameObject notePrefab;
+    public GameObject notesLayout;
 
     // Метод для добавления новой заметки в список
     public void AddNote(string title, string description, AudioClip audioClip)
@@ -46,6 +49,19 @@ public class NoteManager : MonoBehaviour
         };
 
         notes.Add(newNote);
+        
+        if (notePrefab != null && notesLayout != null)
+        {
+            GameObject newNoteObject = Instantiate(notePrefab, notesLayout.transform);
+            var note = newNoteObject.GetComponent<NotepadNote>();
+            note.SetupNote(newNote.title, newNote.description, newNote.audioClip);
+            
+            notepadNotes.Add(note);
+        }
+        else
+        {
+            Debug.LogWarning("NotePrefab or NotesLayout is not assigned in the inspector.");
+        }
     }
 
     // Метод для удаления заметки из списка по индексу
@@ -78,15 +94,13 @@ public class NoteManager : MonoBehaviour
     // Метод Awake для инициализации синглтона
     private void Awake()
     {
-        // Если экземпляра нет, то установить его и не уничтожать объект при загрузке новой сцены
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)
         {
-            // Если экземпляр уже существует и это не текущий, уничтожить текущий
             Destroy(gameObject);
         }
     }
