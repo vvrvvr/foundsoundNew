@@ -34,7 +34,7 @@ public class NoteManager : MonoBehaviour
 
     // Список заметок
     public List<Note> notes = new List<Note>();
-    public List<NotepadNote> notepadNotes = new List<NotepadNote>();
+    public List<GameObject> notepadNotes = new List<GameObject>();
     public GameObject notePrefab;
     public GameObject notesLayout;
 
@@ -55,28 +55,15 @@ public class NoteManager : MonoBehaviour
             GameObject newNoteObject = Instantiate(notePrefab, notesLayout.transform);
             var note = newNoteObject.GetComponent<NotepadNote>();
             note.SetupNote(newNote.title, newNote.description, newNote.audioClip);
-            
-            notepadNotes.Add(note);
+            newNoteObject.name = newNote.title;
+            notepadNotes.Add(newNoteObject);
         }
         else
         {
             Debug.LogWarning("NotePrefab or NotesLayout is not assigned in the inspector.");
         }
     }
-
-    // Метод для удаления заметки из списка по индексу
-    // public void RemoveNoteAt(int index)
-    // {
-    //     if (index >= 0 && index < notes.Count)
-    //     {
-    //         notes.RemoveAt(index);
-    //     }
-    //     else
-    //     {
-    //         Debug.LogWarning("Invalid index: " + index);
-    //     }
-    // }
-
+    
     // Метод для удаления заметки по названию
     public void RemoveByName(string name)
     {
@@ -90,10 +77,10 @@ public class NoteManager : MonoBehaviour
         }
         for (int i = 0; i < notepadNotes.Count; i++)
         {
-            if (notepadNotes[i].RecordName == name)
+            
+            if (notepadNotes[i].name == name)
             {
-                var noteGameObject = notepadNotes[i].GetComponent<GameObject>();
-                Destroy(noteGameObject);
+                Destroy(notepadNotes[i]);
                 notepadNotes.RemoveAt(i);
                 return;
             }
