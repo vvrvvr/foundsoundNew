@@ -61,6 +61,11 @@ public class NoteManager : MonoBehaviour
         notes.Add(newNote);
     }
 
+    public void Test()
+    {
+        Debug.Log("Test");
+    }
+
     // Метод для удаления заметки из списка по индексу
     public void RemoveNoteAt(int index)
     {
