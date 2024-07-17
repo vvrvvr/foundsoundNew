@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Record : MonoBehaviour
 {
-   public string RecordName = "test record";
+   public string RecordName = "test";
    public string Description = "Some decscription";
    public AudioClip recordAudio;
 
@@ -12,6 +12,11 @@ public class Record : MonoBehaviour
       if (Input.GetKeyDown(KeyCode.P))
       {
          NoteManager.Instance.AddNote(RecordName, Description, recordAudio);
+      }
+      
+      if (Input.GetKeyDown(KeyCode.O))
+      {
+         NoteManager.Instance.RemoveByName("test");
       }
    }
 }
