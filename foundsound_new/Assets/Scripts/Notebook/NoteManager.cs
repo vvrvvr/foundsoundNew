@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public struct Note
@@ -41,8 +42,8 @@ public class NoteManager : MonoBehaviour
     public string currentOpenedNoteName = null;
     [Space(10)] 
     public GameObject notePantel;
-    public TextMeshProUGUI notePantelTitle;
-    public TextMeshProUGUI notePantelDescription;
+    public TextMeshProUGUI notePanelTitle;
+    public TextMeshProUGUI notePanelDescription;
     
 
     // Метод для добавления новой заметки в список
@@ -97,14 +98,13 @@ public class NoteManager : MonoBehaviour
 
     public void OpenNote(string name)
     {
-       
         currentOpenedNoteName = name;
         for (int i = 0; i < notes.Count; i++)
         {
             if (notes[i].title == name)
             {
-                notePantelTitle.text = notes[i].title;
-                notePantelDescription.text = notes[i].description;
+                notePanelTitle.text = notes[i].title;
+                notePanelDescription.text = notes[i].description;
                 break;
             }
         }
@@ -115,8 +115,8 @@ public class NoteManager : MonoBehaviour
     public void CloseNote()
     {
         currentOpenedNoteName = null;
-        notePantelTitle.text = null;
-        notePantelDescription.text = null;
+        notePanelTitle.text = null;
+        notePanelDescription.text = null;
         notePantel.SetActive(false);
     }
 
