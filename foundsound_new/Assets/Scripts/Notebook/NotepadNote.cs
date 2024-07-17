@@ -3,23 +3,15 @@ using UnityEngine;
 
 public class NotepadNote : MonoBehaviour
 {
-    
-    public string RecordName = "test";
-    public string Description = "Some decscription";
-    public AudioClip recordAudio;
     public TextMeshProUGUI text;
 
-    public void SetupNote(string title, string desc, AudioClip audioForNote)
+    public void SetupNote()
     {
-        RecordName = title;
-        Description = desc;
-        recordAudio = audioForNote;
-        
-        text.text = RecordName;
+        text.text = gameObject.name;
     }
     
     public void OpenNote()
     {
-        Debug.Log("Open "+ RecordName);
+        NoteManager.Instance.OpenNote(gameObject.name);
     }
 }

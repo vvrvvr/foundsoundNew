@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public struct Note
@@ -37,6 +38,12 @@ public class NoteManager : MonoBehaviour
     public List<GameObject> notepadNotes = new List<GameObject>();
     public GameObject notePrefab;
     public GameObject notesLayout;
+    public string currentOpenedNoteName = null;
+    [Space(10)] 
+    public GameObject notePantel;
+    public TextMeshProUGUI notePantelTitle;
+    public TextMeshProUGUI notePantelDescription;
+    
 
     // Метод для добавления новой заметки в список
     public void AddNote(string title, string description, AudioClip audioClip)
@@ -54,8 +61,8 @@ public class NoteManager : MonoBehaviour
         {
             GameObject newNoteObject = Instantiate(notePrefab, notesLayout.transform);
             var note = newNoteObject.GetComponent<NotepadNote>();
-            note.SetupNote(newNote.title, newNote.description, newNote.audioClip);
             newNoteObject.name = newNote.title;
+            note.SetupNote();
             notepadNotes.Add(newNoteObject);
         }
         else
@@ -88,6 +95,36 @@ public class NoteManager : MonoBehaviour
         Debug.LogWarning("Note with title '" + name + "' not found.");
     }
 
+    public void OpenNote(string name)
+    {
+       
+        currentOpenedNoteName = name;
+        for (int i = 0; i < notes.Count; i++)
+        {
+            if (notes[i].title == name)
+            {
+                notePantelTitle.text = notes[i].title;
+                notePantelDescription.text = notes[i].description;
+                break;
+            }
+        }
+        Debug.Log("Open "+ currentOpenedNoteName);
+        notePantel.SetActive(true);
+    }
+
+    public void CloseNote()
+    {
+        currentOpenedNoteName = null;
+        notePantelTitle.text = null;
+        notePantelDescription.text = null;
+        notePantel.SetActive(false);
+    }
+
+    public void DropNote()
+    {
+        RemoveByName(currentOpenedNoteName);
+    }
+
     // Метод Awake для инициализации синглтона
     private void Awake()
     {
@@ -100,5 +137,7 @@ public class NoteManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        notePantel.SetActive(false);
     }
 }

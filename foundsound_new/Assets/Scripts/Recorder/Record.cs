@@ -14,9 +14,9 @@ public class Record : MonoBehaviour
          NoteManager.Instance.AddNote(RecordName, Description, recordAudio);
       }
       
-      if (Input.GetKeyDown(KeyCode.O))
-      {
-         NoteManager.Instance.RemoveByName("test");
-      }
+      // if (Input.GetKeyDown(KeyCode.O))
+      // {
+      //    NoteManager.Instance.RemoveByName("test");
+      // }
    }
 }
