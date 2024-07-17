@@ -65,17 +65,17 @@ public class NoteManager : MonoBehaviour
     }
 
     // Метод для удаления заметки из списка по индексу
-    public void RemoveNoteAt(int index)
-    {
-        if (index >= 0 && index < notes.Count)
-        {
-            notes.RemoveAt(index);
-        }
-        else
-        {
-            Debug.LogWarning("Invalid index: " + index);
-        }
-    }
+    // public void RemoveNoteAt(int index)
+    // {
+    //     if (index >= 0 && index < notes.Count)
+    //     {
+    //         notes.RemoveAt(index);
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("Invalid index: " + index);
+    //     }
+    // }
 
     // Метод для удаления заметки по названию
     public void RemoveByName(string name)
@@ -85,6 +85,16 @@ public class NoteManager : MonoBehaviour
             if (notes[i].title == name)
             {
                 notes.RemoveAt(i);
+                break;
+            }
+        }
+        for (int i = 0; i < notepadNotes.Count; i++)
+        {
+            if (notepadNotes[i].RecordName == name)
+            {
+                var noteGameObject = notepadNotes[i].GetComponent<GameObject>();
+                Destroy(noteGameObject);
+                notepadNotes.RemoveAt(i);
                 return;
             }
         }
