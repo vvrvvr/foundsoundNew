@@ -15,4 +15,11 @@ public class Record : MonoBehaviour
       }
       
    }
+
+   public void TakeRecord()
+   {
+      NoteManager.Instance.AddNote(RecordName, Description, recordAudio);
+      //удалить эмиттер звука
+      // выключить звук и интерактивность
+   }
 }

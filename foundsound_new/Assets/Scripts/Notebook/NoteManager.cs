@@ -44,6 +44,8 @@ public class NoteManager : MonoBehaviour
     public GameObject notePantel;
     public TextMeshProUGUI notePanelTitle;
     public TextMeshProUGUI notePanelDescription;
+    [Space(10)] public GameObject droppedSoundPrefab;
+    public float dropForce = 1f;
     
 
     // Метод для добавления новой заметки в список
@@ -124,6 +126,29 @@ public class NoteManager : MonoBehaviour
     {
         RemoveByName(currentOpenedNoteName);
         CloseNote();
+
+        if (droppedSoundPrefab == null)
+        {
+            Debug.LogWarning("DroppedSoundPrefab is not assigned.");
+            return;
+        }
+
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            Debug.LogWarning("MainCamera not found.");
+            return;
+        }
+
+        GameObject droppedSound = Instantiate(droppedSoundPrefab, mainCamera.transform.position, Quaternion.identity);
+        Rigidbody rb = droppedSound.GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogWarning("DroppedSoundPrefab does not have a Rigidbody component.");
+            return;
+        }
+
+        rb.AddForce(mainCamera.transform.forward * dropForce, ForceMode.Impulse);
     }
 
     // Метод Awake для инициализации синглтона
