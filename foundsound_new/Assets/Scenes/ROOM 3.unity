@@ -2391,6 +2391,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721723198}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &726650232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 687180947, guid: 11aaea5348574644a9eb4f4504fcce3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1857970572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &729915507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2877,6 +2883,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1695145826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1103193566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1773623360729482, guid: 11aaea5348574644a9eb4f4504fcce3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1857970572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1149657178
 GameObject:
   m_ObjectHideFlags: 0
@@ -4675,8 +4687,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 213764348}
-  playerObject: {fileID: 0}
-  firstPersonAudioObject: {fileID: 0}
+  playerObject: {fileID: 1103193566}
+  firstPersonAudioObject: {fileID: 726650232}
   moveSpeed: 10
 --- !u!65 &1805699226
 BoxCollider:
@@ -4771,15 +4783,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4207293392497186, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -213.6814
+      value: 3.16
       objectReference: {fileID: 0}
     - target: {fileID: 4207293392497186, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.273373
+      value: -18.46
       objectReference: {fileID: 0}
     - target: {fileID: 4207293392497186, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14252.893
+      value: 22.511
       objectReference: {fileID: 0}
     - target: {fileID: 4207293392497186, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_LocalRotation.w
