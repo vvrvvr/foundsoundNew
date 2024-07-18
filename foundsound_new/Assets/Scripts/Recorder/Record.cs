@@ -6,6 +6,7 @@ public class Record : MonoBehaviour
    public string RecordName = "test";
    public string Description = "Some decscription";
    public AudioClip recordAudio;
+   public bool isDestroyable = false;
 
    private void Update() //удалить
    {

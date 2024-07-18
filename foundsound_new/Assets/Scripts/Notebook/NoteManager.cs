@@ -44,6 +44,7 @@ public class NoteManager : MonoBehaviour
     public GameObject notePantel;
     public TextMeshProUGUI notePanelTitle;
     public TextMeshProUGUI notePanelDescription;
+    public AudioClip currentAudio;
     [Space(10)] public GameObject droppedSoundPrefab;
     public float dropForce = 1f;
     
@@ -107,6 +108,7 @@ public class NoteManager : MonoBehaviour
             {
                 notePanelTitle.text = notes[i].title;
                 notePanelDescription.text = notes[i].description;
+                currentAudio = notes[i].audioClip;
                 break;
             }
         }
@@ -119,13 +121,13 @@ public class NoteManager : MonoBehaviour
         currentOpenedNoteName = null;
         notePanelTitle.text = null;
         notePanelDescription.text = null;
+        currentAudio = null;
         notePantel.SetActive(false);
     }
 
     public void DropNote()
     {
-        RemoveByName(currentOpenedNoteName);
-        CloseNote();
+        
 
         if (droppedSoundPrefab == null)
         {
@@ -141,6 +143,13 @@ public class NoteManager : MonoBehaviour
         }
 
         GameObject droppedSound = Instantiate(droppedSoundPrefab, mainCamera.transform.position, Quaternion.identity);
+        var droppedSoundRecord = droppedSound.GetComponent<Record>();
+        droppedSoundRecord.RecordName = currentOpenedNoteName;
+        droppedSoundRecord.Description = notePanelDescription.text;
+        droppedSoundRecord.recordAudio = currentAudio;
+        droppedSoundRecord.isDestroyable = true;
+        
+        
         Rigidbody rb = droppedSound.GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -149,6 +158,9 @@ public class NoteManager : MonoBehaviour
         }
 
         rb.AddForce(mainCamera.transform.forward * dropForce, ForceMode.Impulse);
+        
+        RemoveByName(currentOpenedNoteName);
+        CloseNote();
     }
 
     // Метод Awake для инициализации синглтона
