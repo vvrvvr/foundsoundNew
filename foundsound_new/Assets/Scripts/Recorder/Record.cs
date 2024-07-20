@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Record : MonoBehaviour
+public class Record : MonoBehaviour, IInteractable
 {
    public string RecordName = "test";
    public string Description = "Some decscription";
@@ -14,9 +14,13 @@ public class Record : MonoBehaviour
       {
          NoteManager.Instance.AddNote(RecordName, Description, recordAudio);
       }
-      
    }
-
+   
+   public void Interact()
+   {
+      TakeRecord();
+   }
+   
    public void TakeRecord()
    {
       NoteManager.Instance.AddNote(RecordName, Description, recordAudio);

@@ -162,8 +162,7 @@ public class NoteManager : MonoBehaviour
         RemoveByName(currentOpenedNoteName);
         CloseNote();
     }
-
-    // Метод Awake для инициализации синглтона
+    
     private void Awake()
     {
         if (_instance == null)
