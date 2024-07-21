@@ -10,6 +10,7 @@ public class Record : MonoBehaviour, IInteractable
    public bool isDestroyable = false;
    public Outline outline;
    public bool shouldOutlineBeEnabled;
+   public Transform emitterTransform;
    
    public void See()
    {
@@ -41,6 +42,8 @@ public class Record : MonoBehaviour, IInteractable
       NoteManager.Instance.AddNote(RecordName, Description, recordAudio);
       //удалить эмиттер звука
       // выключить звук и интерактивность
+      SignalController signalController = FindObjectOfType<SignalController>();
+      signalController.RemoveEmiter(emitterTransform);
       Destroy(gameObject);
    }
 }

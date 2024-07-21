@@ -78,30 +78,25 @@ public class SignalController : MonoBehaviour
     {
         if (other.CompareTag("emiter"))
         {
-            if (emitersToAdd.Contains(other.transform))
-            {
-                StopCoroutine(addingEmiter);
-                emitersToAdd.Remove(other.transform);
-               
-                
-                Debug.Log("Unregistered add: " + other.name);
-            }
-            if (emiters.Contains(other.transform))
-            {
-                emiters.Remove(other.transform);
-                Debug.Log("Unregistered: " + other.name);
-            }
-            
+            RemoveEmiter(other.transform);
         }
     }
 
     // Метод для удаления эмиттера из списка по атрибуту
     public void RemoveEmiter(Transform emiterToRemove)
     {
+        if (emitersToAdd.Contains(emiterToRemove))
+        {
+            StopCoroutine(addingEmiter);
+            emitersToAdd.Remove(emiterToRemove);
+               
+                
+            Debug.Log("Unregistered add: " + emiterToRemove.name);
+        }
         if (emiters.Contains(emiterToRemove))
         {
             emiters.Remove(emiterToRemove);
-            Debug.Log("Emiter removed: " + emiterToRemove.name);
+            Debug.Log("Unregistered: " + emiterToRemove.name);
         }
     }
 

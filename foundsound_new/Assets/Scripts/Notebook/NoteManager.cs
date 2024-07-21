@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
 
-[System.Serializable]
+
 public struct Note
 {
     public string title;

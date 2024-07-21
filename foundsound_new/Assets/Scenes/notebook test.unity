@@ -3832,7 +3832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 563938768}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ItemHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8660,7 +8660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7699d18f6d1146418b2b2588adf03ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notes: []
   notepadNotes: []
   notePrefab: {fileID: 1772849542008890549, guid: c43cf060eed9ff4498fd4adba229e755,
     type: 3}
@@ -9862,6 +9861,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6692290496178104961, guid: d7a312dbd37764a86a2698eba5f80406, type: 3}
+--- !u!4 &1386961768 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7318669443409272567, guid: 2db76ec59df4e8248a0f71c16c689417,
+    type: 3}
+  m_PrefabInstance: {fileID: 8745745964191339450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1390875784
 GameObject:
   m_ObjectHideFlags: 0
@@ -10486,7 +10491,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c98cb7feb66b4458898fcc22326eaf11,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -13914,6 +13919,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6931215299829206054, guid: 2db76ec59df4e8248a0f71c16c689417,
+        type: 3}
+      propertyPath: emitterTransform
+      value: 
+      objectReference: {fileID: 1386961768}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
