@@ -49,8 +49,10 @@ public class FirstPersonLook : MonoBehaviour
         velocity += frameVelocity;
         velocity.y = Mathf.Clamp(velocity.y, -90, 90);
 
-        // Rotate camera up-down and controller left-right from velocity.
+        // Rotate camera up-down from velocity.
         transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
+        
+        // Rotate character left-right from velocity.
         character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
     }
 
@@ -83,9 +85,8 @@ public class FirstPersonLook : MonoBehaviour
             float t = elapsedTime / duration;
             velocity.y = Mathf.Lerp(startYRotation, 0, t);
 
-            // Rotate camera up-down and controller left-right from velocity.
+            // Rotate camera up-down from velocity.
             transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
-            //character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
 
             yield return null;
         }

@@ -124,6 +124,7 @@ MonoBehaviour:
   RecordName: test
   Description: Some decscription
   recordAudio: {fileID: 8300000, guid: 23d0c90f4e27b401ca5b3868890b71d4, type: 3}
+  isDestroyable: 0
 --- !u!54 &7563634331810276765
 Rigidbody:
   m_ObjectHideFlags: 0

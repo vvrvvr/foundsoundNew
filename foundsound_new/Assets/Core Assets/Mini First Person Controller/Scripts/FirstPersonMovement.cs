@@ -11,11 +11,23 @@ public class FirstPersonMovement : MonoBehaviour
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
 
-    Rigidbody rigidbody;
+    private Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
-
+    private bool isControlFrozen = false; // Flag to control if movement is frozen
+    
+    private void OnEnable() 
+    {
+        EventManager.OnNotePadOpened.AddListener(FreezeControl);
+        EventManager.OnNotePadClosed.AddListener(UnfreezeControl);
+    }
+    
+    private void OnDisable()
+    {
+        EventManager.OnNotePadOpened.RemoveListener(FreezeControl);
+        EventManager.OnNotePadClosed.RemoveListener(UnfreezeControl);
+    }
 
     void Awake()
     {
@@ -25,6 +37,12 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isControlFrozen)
+        {
+            // If control is frozen, skip movement logic.
+            return;
+        }
+
         // Update IsRunning from input.
         IsRunning = canRun && Input.GetKey(runningKey);
 
@@ -36,9 +54,24 @@ public class FirstPersonMovement : MonoBehaviour
         }
 
         // Get targetVelocity from input.
-        Vector2 targetVelocity =new Vector2( Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
+        Vector2 targetVelocity = new Vector2(Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
 
         // Apply movement.
-        rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
+        Vector3 velocity = transform.rotation * new Vector3(targetVelocity.x, 0, targetVelocity.y);
+        rigidbody.velocity = new Vector3(velocity.x, rigidbody.velocity.y, velocity.z);
+    }
+
+    // Method to freeze control
+    public void FreezeControl()
+    {
+        Debug.Log("заморозило");
+        isControlFrozen = true;
+        rigidbody.velocity = Vector3.zero; // Optionally stop the character's movement
+        rigidbody.angularVelocity = Vector3.zero;
+        
+    }
+    public void UnfreezeControl()
+    {
+        isControlFrozen = false;
     }
 }
