@@ -19,6 +19,11 @@ public class Record : MonoBehaviour, IInteractable
    public void Interact()
    {
       //TakeRecord();
+      Debug.Log("кликнул на: "+ gameObject.name);
+   }
+
+   public void See()
+   {
       Debug.Log("вижу: "+ gameObject.name);
    }
    

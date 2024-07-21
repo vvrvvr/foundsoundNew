@@ -42,7 +42,11 @@ public class Interaction : MonoBehaviour
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                interactable.Interact();
+                interactable.See();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    interactable.Interact();
+                }
             }
         }
     }
