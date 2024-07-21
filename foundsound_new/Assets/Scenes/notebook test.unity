@@ -3195,6 +3195,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Old Radio
       objectReference: {fileID: 0}
+    - target: {fileID: 9159537069380098256, guid: a7dbdd508737b0d49b444c4263d812f1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8257,6 +8262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toy Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7cb1ba0f39514de48f3f1ffc5825e98,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5145593406017081315, guid: b7cb1ba0f39514de48f3f1ffc5825e98,
         type: 3}
       propertyPath: m_Enabled
@@ -9861,12 +9871,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6692290496178104961, guid: d7a312dbd37764a86a2698eba5f80406, type: 3}
---- !u!4 &1386961768 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7318669443409272567, guid: 2db76ec59df4e8248a0f71c16c689417,
-    type: 3}
-  m_PrefabInstance: {fileID: 8745745964191339450}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1390875784
 GameObject:
   m_ObjectHideFlags: 0
@@ -10122,7 +10126,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448700514}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 68a9c23e759c44ffd9427e9edae0a27b, type: 3}
@@ -13864,15 +13868,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundObject
       objectReference: {fileID: 0}
-    - target: {fileID: 4818234833489829642, guid: 2db76ec59df4e8248a0f71c16c689417,
-        type: 3}
-      propertyPath: outlineWidth
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 6608881490336222716, guid: 2db76ec59df4e8248a0f71c16c689417,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.86
+      value: -23.15
       objectReference: {fileID: 0}
     - target: {fileID: 6608881490336222716, guid: 2db76ec59df4e8248a0f71c16c689417,
         type: 3}
@@ -13882,7 +13881,7 @@ PrefabInstance:
     - target: {fileID: 6608881490336222716, guid: 2db76ec59df4e8248a0f71c16c689417,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.705
+      value: -10.93
       objectReference: {fileID: 0}
     - target: {fileID: 6608881490336222716, guid: 2db76ec59df4e8248a0f71c16c689417,
         type: 3}
@@ -13921,9 +13920,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6931215299829206054, guid: 2db76ec59df4e8248a0f71c16c689417,
         type: 3}
-      propertyPath: emitterTransform
-      value: 
-      objectReference: {fileID: 1386961768}
+      propertyPath: isDestroyable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
