@@ -3539,6 +3539,30 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 53889491}
   m_SourcePrefab: {fileID: 100100000, guid: a9dc368cc3d9f4030bf1bd0ed00fb283, type: 3}
+--- !u!1 &516420404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1240196041757475160, guid: 2db76ec59df4e8248a0f71c16c689417,
+    type: 3}
+  m_PrefabInstance: {fileID: 8745745964191339450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &516420406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516420404}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 20
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &522298455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10283,7 +10307,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448700514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f919af051db7b430199b46ee1e1190f8, type: 3}
   m_Name: 
@@ -14104,10 +14128,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6931215299829206054, guid: 2db76ec59df4e8248a0f71c16c689417,
+        type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 516420406}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1240196041757475160, guid: 2db76ec59df4e8248a0f71c16c689417,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 516420406}
   m_SourcePrefab: {fileID: 100100000, guid: 2db76ec59df4e8248a0f71c16c689417, type: 3}
 --- !u!114 &8760298602360470235
 MonoBehaviour:
