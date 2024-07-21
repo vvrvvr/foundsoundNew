@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,21 +21,29 @@ public class GameManager : MonoBehaviour
     {
         if (!isHasControl)
             return;
-        ToggleObject(KeyCode.R, NotepadObj);
-        ToggleObject(KeyCode.F, RecorderObj);
+        ToggleObject(KeyCode.R, RecorderObj, null, null);
+        ToggleObject(KeyCode.F, NotepadObj,EventManager.OnNotePadOpened, EventManager.OnNotePadClosed );
     }
 
-    public void ToggleObject(KeyCode key, GameObject obj)
+    public void ToggleObject(KeyCode key, GameObject obj, UnityEvent onOpen, UnityEvent onClose)
     {
         if (Input.GetKeyDown(key))
         {
             if (obj != null && obj.activeSelf)
             {
                 obj.SetActive(false);
+                if (onClose != null)
+                {
+                    onClose.Invoke();
+                }
             }
             else
             {
                 obj.SetActive(true);
+                if (onOpen != null)
+                {
+                    onOpen.Invoke();
+                }
             }
         }
     }
