@@ -57,22 +57,30 @@ public class Record : MonoBehaviour, IInteractable
    
    public void TakeRecord()
    {
-      NoteManager.Instance.AddNote(RecordName, Description, recordAudio);
       
-      if (isDestroyable) //для выбрасываемого звука
+      bool canTakeRecord = NoteManager.Instance.AddNote(RecordName, Description, recordAudio);
+      if (canTakeRecord)
       {
-         SignalController signalController = FindObjectOfType<SignalController>();
-         signalController.RemoveEmiter(emitterTransform);
-         Destroy(gameObject);
+         if (isDestroyable) //для выбрасываемого звука
+         {
+            SignalController signalController = FindObjectOfType<SignalController>();
+            signalController.RemoveEmiter(emitterTransform);
+            Destroy(gameObject);
+         }
+         else //для звучащих предметов на уровне
+         {
+            outline.enabled = false;
+            SignalController signalController = FindObjectOfType<SignalController>();
+            signalController.RemoveEmiter(emitterTransform);
+            emitterTransform.gameObject.SetActive(false);
+            audioSource.Stop();
+            isActive = false;
+         }
       }
-      else //для звучащих предметов на уровне
+      else
       {
-         outline.enabled = false;
-         SignalController signalController = FindObjectOfType<SignalController>();
-         signalController.RemoveEmiter(emitterTransform);
-         emitterTransform.gameObject.SetActive(false);
-         audioSource.Stop();
-         isActive = false;
+         Debug.Log("не могу взять запись не хватает места в блокноте");
+         //логика если не могу взять запись
       }
       
    }

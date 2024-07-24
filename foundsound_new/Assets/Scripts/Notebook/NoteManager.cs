@@ -47,32 +47,43 @@ public class NoteManager : MonoBehaviour
     public AudioClip currentAudio;
     [Space(10)] public GameObject droppedSoundPrefab;
     public float dropForce = 1f;
+    [Space(10)] public int maxNotesCount = 12;
     
 
     // Метод для добавления новой заметки в список
-    public void AddNote(string title, string description, AudioClip audioClip)
+    public bool AddNote(string title, string description, AudioClip audioClip)
     {
-        Note newNote = new Note
+        if (notes.Count < maxNotesCount)
         {
-            title = title,
-            description = description,
-            audioClip = audioClip
-        };
+            Note newNote = new Note
+            {
+                title = title,
+                description = description,
+                audioClip = audioClip
+            };
 
-        notes.Add(newNote);
+            notes.Add(newNote);
         
-        if (notePrefab != null && notesLayout != null)
-        {
-            GameObject newNoteObject = Instantiate(notePrefab, notesLayout.transform);
-            var note = newNoteObject.GetComponent<NotepadNote>();
-            newNoteObject.name = newNote.title;
-            note.SetupNote();
-            notepadNotes.Add(newNoteObject);
+            if (notePrefab != null && notesLayout != null)
+            {
+                GameObject newNoteObject = Instantiate(notePrefab, notesLayout.transform);
+                var note = newNoteObject.GetComponent<NotepadNote>();
+                newNoteObject.name = newNote.title;
+                note.SetupNote();
+                notepadNotes.Add(newNoteObject);
+            }
+            else
+            {
+                Debug.LogWarning("NotePrefab or NotesLayout is not assigned in the inspector.");
+            }
+            Debug.Log(notes.Count);
+            return true;
         }
         else
         {
-            Debug.LogWarning("NotePrefab or NotesLayout is not assigned in the inspector.");
+            return false;
         }
+        
     }
     
     // Метод для удаления заметки по названию
