@@ -1,8 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
-
 
 public struct Note
 {
@@ -48,7 +48,24 @@ public class NoteManager : MonoBehaviour
     [Space(10)] public GameObject droppedSoundPrefab;
     public float dropForce = 1f;
     [Space(10)] public int maxNotesCount = 12;
+    [Space(10)] public float openCloseNoteDelayTime = 0.5f; // Delay time for opening and closing notes
+    [Space(10)]
+    public Animator animator;
+    private const string OpenNoteTrigger = "IsOpenNote";
+    private const string DisappearTrigger = "IsDisappear";
+    private const string CloseNoteTrigger = "IsCloseNote";
     
+    private void OnEnable() 
+    {
+        // EventManager.OnNotePadOpened.AddListener(LockView);
+        EventManager.OnNotePadClosed.AddListener(CloseNotePadAnimation);
+    }
+    
+    private void OnDisable()
+    {
+        // EventManager.OnNotePadOpened.RemoveListener(LockView);
+        EventManager.OnNotePadClosed.RemoveListener(CloseNotePadAnimation);
+    }
 
     // Метод для добавления новой заметки в список
     public bool AddNote(string title, string description, AudioClip audioClip)
@@ -83,7 +100,6 @@ public class NoteManager : MonoBehaviour
         {
             return false;
         }
-        
     }
     
     // Метод для удаления заметки по названию
@@ -99,7 +115,6 @@ public class NoteManager : MonoBehaviour
         }
         for (int i = 0; i < notepadNotes.Count; i++)
         {
-            
             if (notepadNotes[i].name == name)
             {
                 Destroy(notepadNotes[i]);
@@ -123,23 +138,35 @@ public class NoteManager : MonoBehaviour
                 break;
             }
         }
-        Debug.Log("Open "+ currentOpenedNoteName);
+        Debug.Log("Open " + currentOpenedNoteName);
+        StartCoroutine(OpenNoteCoroutine());
+    }
+
+    private IEnumerator OpenNoteCoroutine()
+    {
+        animator.SetTrigger(OpenNoteTrigger);
+        yield return new WaitForSeconds(openCloseNoteDelayTime);
         notePantel.SetActive(true);
     }
 
     public void CloseNote()
     {
         currentOpenedNoteName = null;
+        currentAudio = null;
+        StartCoroutine(CloseNoteCoroutine());
+    }
+
+    private IEnumerator CloseNoteCoroutine()
+    {
+        animator.SetTrigger(CloseNoteTrigger);
+        yield return new WaitForSeconds(openCloseNoteDelayTime);
         notePanelTitle.text = null;
         notePanelDescription.text = null;
-        currentAudio = null;
         notePantel.SetActive(false);
     }
 
     public void DropNote()
     {
-        
-
         if (droppedSoundPrefab == null)
         {
             Debug.LogWarning("DroppedSoundPrefab is not assigned.");
@@ -159,7 +186,6 @@ public class NoteManager : MonoBehaviour
         droppedSoundRecord.Description = notePanelDescription.text;
         droppedSoundRecord.recordAudio = currentAudio;
         droppedSoundRecord.isDestroyable = true;
-        
         
         Rigidbody rb = droppedSound.GetComponent<Rigidbody>();
         if (rb == null)
@@ -187,5 +213,10 @@ public class NoteManager : MonoBehaviour
         }
         
         notePantel.SetActive(false);
+    }
+
+    private void CloseNotePadAnimation()
+    {
+        animator.SetTrigger(DisappearTrigger);
     }
 }

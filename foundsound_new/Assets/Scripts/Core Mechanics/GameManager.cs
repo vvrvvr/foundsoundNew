@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public bool isHasControl = true;
 
     [Space(10)] public GameObject NotepadObj;
-
     public GameObject RecorderObj;
+
+    public float delayTime = 2.0f; // Время задержки в секундах
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,9 @@ public class GameManager : MonoBehaviour
     {
         if (!isHasControl)
             return;
+
         ToggleObject(KeyCode.R, RecorderObj, null, null);
-        ToggleObject(KeyCode.F, NotepadObj,EventManager.OnNotePadOpened, EventManager.OnNotePadClosed );
+        ToggleNotepad(KeyCode.F, NotepadObj, EventManager.OnNotePadOpened, EventManager.OnNotePadClosed);
     }
 
     public void ToggleObject(KeyCode key, GameObject obj, UnityEvent onOpen, UnityEvent onClose)
@@ -33,19 +35,37 @@ public class GameManager : MonoBehaviour
             if (obj != null && obj.activeSelf)
             {
                 obj.SetActive(false);
-                if (onClose != null)
-                {
-                    onClose.Invoke();
-                }
+                onClose?.Invoke();
             }
             else
             {
                 obj.SetActive(true);
-                if (onOpen != null)
-                {
-                    onOpen.Invoke();
-                }
+                onOpen?.Invoke();
             }
+        }
+    }
+
+    public void ToggleNotepad(KeyCode key, GameObject obj, UnityEvent onOpen, UnityEvent onClose)
+    {
+        if (Input.GetKeyDown(key))
+        {
+            StartCoroutine(ToggleNotepadCoroutine(obj, onOpen, onClose));
+        }
+    }
+
+    private IEnumerator ToggleNotepadCoroutine(GameObject obj, UnityEvent onOpen, UnityEvent onClose)
+    {
+        if (obj != null && obj.activeSelf)
+        {
+            onClose?.Invoke();
+            yield return new WaitForSeconds(delayTime);
+            obj.SetActive(false);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0);
+            obj.SetActive(true);
+            onOpen?.Invoke();
         }
     }
 }
