@@ -84,6 +84,8 @@ public class Record : MonoBehaviour, IInteractable
     private IEnumerator DestroyRecordWithDelay(float destroyDelay)
     {
         isActive = false;
+        yield return new WaitForSeconds(destroyDelay);
+        
         // Вызываем партикл эффект
         if (effect != null)
         {
@@ -91,10 +93,7 @@ public class Record : MonoBehaviour, IInteractable
             instantiatedEffect.Play();
             //Destroy(instantiatedEffect.gameObject, instantiatedEffect.main.duration);
         }
-
-        // Ждём заданное время перед уничтожением
-        yield return new WaitForSeconds(destroyDelay);
-
+        
         DestroyRecord();
     }
 

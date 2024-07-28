@@ -127,8 +127,8 @@ MonoBehaviour:
   recordAudio: {fileID: 8300000, guid: 23d0c90f4e27b401ca5b3868890b71d4, type: 3}
   isDestroyable: 0
   outline: {fileID: 0}
-  shouldOutlineBeEnabled: 0
   emitterTransform: {fileID: 7318669443409272567}
+  effect: {fileID: 198239321507536684, guid: ae5e9d0da5672704e9fd3367770b99cb, type: 3}
 --- !u!54 &7563634331810276765
 Rigidbody:
   m_ObjectHideFlags: 0
