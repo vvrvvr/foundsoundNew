@@ -53,6 +53,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void CloseNotepad()
+    {
+        StartCoroutine(ToggleNotepadCoroutine(NotepadObj, EventManager.OnNotePadOpened, EventManager.OnNotePadClosed));
+    }
+
     private IEnumerator ToggleNotepadCoroutine(GameObject obj, UnityEvent onOpen, UnityEvent onClose)
     {
         if (obj != null && obj.activeSelf)

@@ -20012,6 +20012,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 3956777443786060135, guid: 580b225207307e341bb16d9ace94d8b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4493030595409179704, guid: 580b225207307e341bb16d9ace94d8b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20062,6 +20067,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5087772223028880445, guid: 580b225207307e341bb16d9ace94d8b3,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1188907528}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

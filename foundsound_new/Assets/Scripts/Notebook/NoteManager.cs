@@ -54,6 +54,7 @@ public class NoteManager : MonoBehaviour
     private const string OpenNoteTrigger = "IsOpenNote";
     private const string DisappearTrigger = "IsDisappear";
     private const string CloseNoteTrigger = "IsCloseNote";
+    [Space(10)] public GameManager gameManager;
     
     private void OnEnable() 
     {
@@ -198,6 +199,7 @@ public class NoteManager : MonoBehaviour
         
         RemoveByName(currentOpenedNoteName);
         CloseNote();
+        gameManager.CloseNotepad();
     }
     
     private void Awake()
