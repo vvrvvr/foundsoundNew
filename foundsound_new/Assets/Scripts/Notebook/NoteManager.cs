@@ -58,13 +58,13 @@ public class NoteManager : MonoBehaviour
     
     private void OnEnable() 
     {
-        // EventManager.OnNotePadOpened.AddListener(LockView);
+        EventManager.OnNotePadOpened.AddListener(DisableDescription);
         EventManager.OnNotePadClosed.AddListener(CloseNotePadAnimation);
     }
     
     private void OnDisable()
     {
-        // EventManager.OnNotePadOpened.RemoveListener(LockView);
+        EventManager.OnNotePadOpened.RemoveListener(DisableDescription);
         EventManager.OnNotePadClosed.RemoveListener(CloseNotePadAnimation);
     }
 
@@ -220,5 +220,10 @@ public class NoteManager : MonoBehaviour
     private void CloseNotePadAnimation()
     {
         animator.SetTrigger(DisappearTrigger);
+    }
+
+    private void DisableDescription()
+    {
+        notePantel.SetActive(false);
     }
 }
