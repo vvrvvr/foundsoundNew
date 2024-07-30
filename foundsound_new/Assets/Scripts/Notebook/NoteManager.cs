@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Serialization;
 
 public struct Note
 {
@@ -13,28 +12,25 @@ public struct Note
 
 public class NoteManager : MonoBehaviour
 {
-    // Статическая переменная для хранения экземпляра синглтона
     private static NoteManager _instance;
 
-    // Свойство для доступа к экземпляру синглтона
     public static NoteManager Instance
     {
         get
         {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<NoteManager>();
-                if (_instance == null)
-                {
-                    GameObject go = new GameObject("NoteManager");
-                    _instance = go.AddComponent<NoteManager>();
-                }
-            }
+            // if (_instance == null)
+            // {
+            //     _instance = FindObjectOfType<NoteManager>();
+            //     if (_instance == null)
+            //     {
+            //         GameObject go = new GameObject("NoteManager");
+            //         _instance = go.AddComponent<NoteManager>();
+            //     }
+            // }
             return _instance;
         }
     }
 
-    // Список заметок
     public List<Note> notes = new List<Note>();
     public List<GameObject> notepadNotes = new List<GameObject>();
     public GameObject notePrefab;
@@ -48,9 +44,8 @@ public class NoteManager : MonoBehaviour
     [Space(10)] public GameObject droppedSoundPrefab;
     public float dropForce = 1f;
     [Space(10)] public int maxNotesCount = 12;
-    [Space(10)] public float openCloseNoteDelayTime = 0.5f; // Delay time for opening and closing notes
-    [Space(10)]
-    public Animator animator;
+    [Space(10)] public float openCloseNoteDelayTime = 0.5f; 
+    [Space(10)] public Animator animator;
     private const string OpenNoteTrigger = "IsOpenNote";
     private const string DisappearTrigger = "IsDisappear";
     private const string CloseNoteTrigger = "IsCloseNote";
@@ -68,7 +63,6 @@ public class NoteManager : MonoBehaviour
         EventManager.OnNotePadClosed.RemoveListener(CloseNotePadAnimation);
     }
 
-    // Метод для добавления новой заметки в список
     public bool AddNote(string title, string description, AudioClip audioClip)
     {
         if (notes.Count < maxNotesCount)
@@ -103,7 +97,6 @@ public class NoteManager : MonoBehaviour
         }
     }
     
-    // Метод для удаления заметки по названию
     public void RemoveByName(string name)
     {
         for (int i = 0; i < notes.Count; i++)
@@ -207,7 +200,7 @@ public class NoteManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)
         {
