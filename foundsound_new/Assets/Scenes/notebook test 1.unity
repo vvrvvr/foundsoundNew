@@ -10367,7 +10367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 627938308}
   - component: {fileID: 627938310}
-  - component: {fileID: 627938309}
+  - component: {fileID: 627938311}
   m_Layer: 0
   m_Name: RobotCharacterModel
   m_TagString: Untagged
@@ -10390,19 +10390,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 931965977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &627938309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627938307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cfaa35ef8bf9845bac8741914c280b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineWidth: 20
 --- !u!137 &627938310
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -10467,6 +10454,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00024799095, y: 0.0050327578, z: 0.0029075092}
     m_Extent: {x: 0.0069312183, y: 0.016854798, z: 0.007787727}
   m_DirtyAABB: 0
+--- !u!114 &627938311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627938307}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &629505440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7915399038221320186, guid: 59db769f54577498b9c1386abef7351c,
@@ -12181,6 +12186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signalController: {fileID: 97531342}
+  newRecordManager: {fileID: 1839659269}
 --- !u!4 &877378041
 Transform:
   m_ObjectHideFlags: 0
@@ -12197,6 +12203,7 @@ Transform:
   - {fileID: 1188907524}
   - {fileID: 67211589}
   - {fileID: 7125509981978669998}
+  - {fileID: 1839659268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &889962027
@@ -12435,6 +12442,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6931215299829206054, guid: 2db76ec59df4e8248a0f71c16c689417,
+        type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 627938311}
     - target: {fileID: 6931215299829206054, guid: 2db76ec59df4e8248a0f71c16c689417,
         type: 3}
       propertyPath: RecordName
@@ -18529,6 +18541,51 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6692290496178104961, guid: a2078c687d4324dd69c89624d87cf1c0, type: 3}
+--- !u!1 &1839659267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1839659268}
+  - component: {fileID: 1839659269}
+  m_Layer: 0
+  m_Name: RecordManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1839659268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839659267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 877378041}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1839659269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839659267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0237639258dd7e844945ffc3f05319d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  records: []
 --- !u!1 &1847449142 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 293062988031480133, guid: 70bdeb33163fd41878cc83445e3d1c7d,
@@ -20779,6 +20836,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6931215299829206054, guid: 2db76ec59df4e8248a0f71c16c689417,
         type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 9159537069469441811}
+    - target: {fileID: 6931215299829206054, guid: 2db76ec59df4e8248a0f71c16c689417,
+        type: 3}
       propertyPath: RecordName
       value: "\u0420\u0430\u0434\u0438\u043E"
       objectReference: {fileID: 0}
@@ -20867,7 +20929,7 @@ GameObject:
   - component: {fileID: 9159537069467016689}
   - component: {fileID: 9159537069468343761}
   - component: {fileID: 9159537069469441809}
-  - component: {fileID: 9159537069469441810}
+  - component: {fileID: 9159537069469441811}
   m_Layer: 0
   m_Name: Old Radio
   m_TagString: Untagged
@@ -20925,19 +20987,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9159537069469441810
+--- !u!114 &9159537069469441811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9159537069467173329}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cfaa35ef8bf9845bac8741914c280b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineWidth: 20
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 14.91
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

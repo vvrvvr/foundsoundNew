@@ -5,6 +5,7 @@ public class PersistentObject : MonoBehaviour
 {
     private static PersistentObject instance;
     public SignalController signalController;
+    public NewRecordManager newRecordManager;
 
     void Awake()
     {
@@ -33,5 +34,6 @@ public class PersistentObject : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         signalController.ClearSignalController();
+        newRecordManager.SetupRecords();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Unity.VisualScripting;
@@ -12,14 +13,22 @@ public class Record : MonoBehaviour, IInteractable
     private bool shouldOutlineBeEnabled;
     public Transform emitterTransform;
     private AudioSource audioSource;
-    private bool isActive = true;
+    public bool isActive = true;
     public ParticleSystem effect; // Добавляем партикл эффект
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = recordAudio;
-        audioSource.Play();
+        if (isActive)
+        {
+            audioSource = GetComponent<AudioSource>();
+            audioSource.clip = recordAudio;
+            audioSource.Play();
+        }
+    }
+
+    private void Awake()
+    {
+        
     }
 
     public void See()
@@ -61,12 +70,8 @@ public class Record : MonoBehaviour, IInteractable
             }
             else // для звучащих предметов на уровне
             {
-                outline.enabled = false;
-                SignalController signalController = FindObjectOfType<SignalController>();
-                signalController.RemoveEmiter(emitterTransform);
-                emitterTransform.gameObject.SetActive(false);
-                audioSource.Stop();
-                isActive = false;
+                DisableRecord();
+                NewRecordManager.Instance.UpdateRecordInformation(gameObject.name);
             }
         }
         else
@@ -74,6 +79,18 @@ public class Record : MonoBehaviour, IInteractable
             Debug.Log("не могу взять запись не хватает места в блокноте");
             // логика если не могу взять запись
         }
+    }
+
+    public void DisableRecord()
+    {
+        if(outline!=null)
+            outline.enabled = false;
+        SignalController signalController = FindObjectOfType<SignalController>();
+        signalController.RemoveEmiter(emitterTransform);
+        emitterTransform.gameObject.SetActive(false);
+        if(audioSource!=null)
+            audioSource.Stop();
+        isActive = false;
     }
 
     public void  DestroyWithDelay(float delay)
