@@ -1,25 +1,37 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PersistentObject : MonoBehaviour
 {
     private static PersistentObject instance;
+    public SignalController signalController;
 
     void Awake()
     {
-        // Проверяем, существует ли уже экземпляр этого объекта
         if (instance != null)
         {
-            // Если экземпляр существует и это не текущий объект, удаляем текущий объект
             if (instance != this)
             {
                 Destroy(gameObject);
+                return;
             }
         }
         else
         {
-            // Если экземпляр не существует, сохраняем текущий объект
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        signalController.ClearSignalController();
     }
 }

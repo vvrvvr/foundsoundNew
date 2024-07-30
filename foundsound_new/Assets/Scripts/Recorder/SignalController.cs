@@ -102,15 +102,20 @@ public class SignalController : MonoBehaviour
 
     void OnDisable()
     {
+        ClearSignalController();
+    }
+
+    public void ClearSignalController()
+    {
         if (addingEmiter != null)
         {
             StopCoroutine(addingEmiter);
         }
         emiters.Clear();
         emitersToAdd.Clear();
-        
     }
     
+
     private IEnumerator AddEmiterAfterDelay(Transform emiter)
     {
         yield return new WaitForSeconds(delayTime);
