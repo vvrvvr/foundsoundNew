@@ -8,7 +8,7 @@ public class MoveObjectOnTrigger : MonoBehaviour
     public float moveSpeed = 1f; // Скорость движения объекта
     private bool isPlayerInside = false;
     private float elapsedTime = 0f;
-    private float duration = 30f; // Продолжительность движения
+    private float duration = 100f; // Продолжительность движения
 
     private Vector3 initialTargetPosition;
 
